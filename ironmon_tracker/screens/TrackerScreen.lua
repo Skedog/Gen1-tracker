@@ -15,7 +15,7 @@ TrackerScreen.Buttons = {
 			local iconset = Options.IconSetMap[Options["Pokemon icon set"]]
 			return FileManager.buildImagePath(iconset.folder, tostring(pokemonID), iconset.extension)
 		end,
-		clickableArea = { Constants.SCREEN.WIDTH + 5, 5, 32, 27 },
+		clickableArea = { Constants.SCREEN.WIDTH + 5, -5, 32, 27 },
 		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN, -5, 32, 32 },
 		isVisible = function() return true end,
 		onClick = function(self)
@@ -30,7 +30,7 @@ TrackerScreen.Buttons = {
 	TypeDefenses = {
 		-- Invisible button area for the type defenses boxes
 		type = Constants.ButtonTypes.NO_BORDER,
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN, Constants.SCREEN.MARGIN + 27, 30, 24, },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN, Constants.SCREEN.MARGIN + 20, 30, 24, },
 		isVisible = function()
 			local pokemon = Tracker.getViewedPokemon() or Tracker.getDefaultPokemon()
 			return PokemonData.isValid(pokemon.pokemonID)
@@ -356,7 +356,7 @@ function TrackerScreen.initialize()
 		TrackerScreen.Buttons[badgeName] = {
 			type = Constants.ButtonTypes.IMAGE,
 			image = FileManager.buildImagePath(FileManager.Folders.Badges, GameSettings.badgePrefix .. "_" .. badgeName .. "_OFF", FileManager.Extensions.BADGE),
-			box = { xOffset, 127, badgeWidth, badgeWidth },
+			box = { xOffset, 126, badgeWidth, badgeWidth },
 			badgeIndex = index,
 			badgeState = 0,
 			isVisible = function() return TrackerScreen.carouselIndex == TrackerScreen.CarouselTypes.BADGES end,
@@ -1024,7 +1024,7 @@ function TrackerScreen.drawCarouselArea(data)
 	local shadowcolor = Utils.calcShadowColor(Theme.COLORS["Lower box background"])
 
 	-- Draw the border box for the Stats area
-	gui.drawRectangle(Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN, 125, Constants.SCREEN.RIGHT_GAP - (2 * Constants.SCREEN.MARGIN), 18, Theme.COLORS["Lower box border"], Theme.COLORS["Lower box background"])
+	gui.drawRectangle(Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN, 124, Constants.SCREEN.RIGHT_GAP - (2 * Constants.SCREEN.MARGIN), 18, Theme.COLORS["Lower box border"], Theme.COLORS["Lower box background"])
 
 	local carousel = TrackerScreen.getCurrentCarouselItem()
 	for _, content in pairs(carousel.getContentList(data.p.id)) do
@@ -1047,8 +1047,9 @@ function TrackerScreen.drawCarouselArea(data)
 	--work around limitation of drawText not having width limit: paint over any spillover
 	local x = Constants.SCREEN.WIDTH + Constants.SCREEN.RIGHT_GAP - Constants.SCREEN.MARGIN
 	local y = 137
-	gui.drawLine(x, y, x, y + 14, Theme.COLORS["Lower box border"])
-	gui.drawRectangle(x + 1, y, 12, 14, Theme.COLORS["Main background"], Theme.COLORS["Main background"])
+	-- disable this as it looks ugly
+	-- gui.drawLine(x, y, x, y + 14, Theme.COLORS["Lower box border"])
+	-- gui.drawRectangle(x + 1, y, 12, 14, Theme.COLORS["Main background"], Theme.COLORS["Main background"])
 end
 
 function TrackerScreen.drawBallPicker()

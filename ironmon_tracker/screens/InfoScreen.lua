@@ -147,7 +147,7 @@ InfoScreen.Buttons = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Back",
 		textColor = "Lower box text",
-		box = { Constants.SCREEN.WIDTH + 117, 141, 24, 11 },
+		box = { Constants.SCREEN.WIDTH + 148, 121, 24, 11 },
 		boxColors = { "Lower box border", "Lower box background" },
 		isVisible = function() return true end,
 		onClick = function(self)
@@ -631,7 +631,7 @@ function InfoScreen.drawPokemonInfoScreen(pokemonID)
 	-- Draw bottom view box and header
 	gui.defaultTextBackground(Theme.COLORS["Lower box background"])
 	botOffsetY = offsetY + 3
-	gui.drawRectangle(Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN, botOffsetY, rightEdge, bottomEdge - botOffsetY + 5, Theme.COLORS["Lower box border"], Theme.COLORS["Lower box background"])
+	gui.drawRectangle(Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN, botOffsetY, rightEdge, bottomEdge - botOffsetY, Theme.COLORS["Lower box border"], Theme.COLORS["Lower box background"])
 	botOffsetY = botOffsetY + 1
 
 	-- MOVES LEVEL BOXES
@@ -725,8 +725,9 @@ function InfoScreen.drawPokemonInfoScreen(pokemonID)
 	Drawing.drawButton(InfoScreen.Buttons.MoveHistory, boxInfoBotShadow)
 	Drawing.drawButton(InfoScreen.Buttons.TypeDefenses, boxInfoBotShadow)
 	Drawing.drawButton(InfoScreen.Buttons.Back, boxInfoBotShadow)
-	InfoScreen.drawNotepadArea()
-	Drawing.drawButton(InfoScreen.Buttons.NotepadTracking, boxInfoBotShadow)
+	-- Disable notepad area as there is no room
+	-- InfoScreen.drawNotepadArea()
+	-- Drawing.drawButton(InfoScreen.Buttons.NotepadTracking, boxInfoBotShadow)
 end
 
 function InfoScreen.drawMoveInfoScreen(moveId)

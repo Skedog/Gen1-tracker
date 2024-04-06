@@ -19,7 +19,7 @@ TypeDefensesScreen.Buttons = {
 	CurrentPage = {
 		type = Constants.ButtonTypes.NO_BORDER,
 		text = "", -- Set later via updateSelf()
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 46, Constants.SCREEN.MARGIN + 135, 50, 10, },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 46, Constants.SCREEN.MARGIN + 115, 50, 10, },
 		isVisible = function() return TypeDefensesScreen.Pager.totalPages > 1 end,
 		updateSelf = function(self)
 			self.text = TypeDefensesScreen.Pager:getPageText()
@@ -28,7 +28,7 @@ TypeDefensesScreen.Buttons = {
 	PrevPage = {
 		type = Constants.ButtonTypes.PIXELIMAGE,
 		image = Constants.PixelImages.LEFT_ARROW,
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 32, Constants.SCREEN.MARGIN + 136, 10, 10, },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 32, Constants.SCREEN.MARGIN + 115, 10, 10, },
 		isVisible = function() return TypeDefensesScreen.Pager.totalPages > 1 end,
 		onClick = function(self)
 			TypeDefensesScreen.Pager:prevPage()
@@ -39,7 +39,7 @@ TypeDefensesScreen.Buttons = {
 	NextPage = {
 		type = Constants.ButtonTypes.PIXELIMAGE,
 		image = Constants.PixelImages.RIGHT_ARROW,
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 91, Constants.SCREEN.MARGIN + 136, 10, 10, },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 91, Constants.SCREEN.MARGIN + 115, 10, 10, },
 		isVisible = function() return TypeDefensesScreen.Pager.totalPages > 1 end,
 		onClick = function(self)
 			TypeDefensesScreen.Pager:nextPage()
@@ -50,7 +50,7 @@ TypeDefensesScreen.Buttons = {
 	Back = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Back",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 136, 24, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 115, 24, 11 },
 		onClick = function(self)
 			TypeDefensesScreen.pokemonID = nil
 			if InfoScreen.infoLookup == nil or InfoScreen.infoLookup == 0 then
@@ -176,7 +176,7 @@ function TypeDefensesScreen.drawScreen()
 		x = Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN,
 		y = Constants.SCREEN.MARGIN,
 		width = Constants.SCREEN.RIGHT_GAP - (Constants.SCREEN.MARGIN * 2),
-		height = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2),
+		height = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 20,
 		text = Theme.COLORS[TypeDefensesScreen.Colors.text],
 		border = Theme.COLORS[TypeDefensesScreen.Colors.border],
 		fill = Theme.COLORS[TypeDefensesScreen.Colors.boxFill],
