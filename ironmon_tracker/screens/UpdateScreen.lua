@@ -147,7 +147,7 @@ UpdateScreen.Buttons = {
 	Back = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Back",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 135, 24, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 125, 24, 11 },
 		isVisible = function() return UpdateScreen.currentState == UpdateScreen.States.NEEDS_CHECK end,
 		onClick = function(self)
 			-- Reset the CheckForUpdates button text
@@ -292,7 +292,7 @@ function UpdateScreen.drawScreen()
 		x = topBox.x,
 		y = topBox.y + topBox.height + 13,
 		width = topBox.width,
-		height = 92,
+		height = 66,
 		text = Theme.COLORS["Lower box text"],
 		border = Theme.COLORS["Lower box border"],
 		fill = Theme.COLORS["Lower box background"],

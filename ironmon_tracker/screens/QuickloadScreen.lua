@@ -39,8 +39,8 @@ QuickloadScreen.Buttons = {
 	PremadeRoms = {
 		type = Constants.ButtonTypes.CHECKBOX,
 		text = QuickloadScreen.OptionKeys[1],
-		clickableArea = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 8, Constants.SCREEN.MARGIN + 44, Constants.SCREEN.RIGHT_GAP - 12, 8 },
-		box = {	Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 8, Constants.SCREEN.MARGIN + 44, 8, 8 },
+		clickableArea = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 8, Constants.SCREEN.MARGIN + 34, Constants.SCREEN.RIGHT_GAP - 12, 8 },
+		box = {	Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 8, Constants.SCREEN.MARGIN + 34, 8, 8 },
 		toggleState = false,
 		toggleColor = "Positive text",
 		onClick = function(self)
@@ -61,8 +61,8 @@ QuickloadScreen.Buttons = {
 	GenerateRom = {
 		type = Constants.ButtonTypes.CHECKBOX,
 		text = QuickloadScreen.OptionKeys[2],
-		clickableArea = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 8, Constants.SCREEN.MARGIN + 77, Constants.SCREEN.RIGHT_GAP - 12, 8 },
-		box = {	Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 8, Constants.SCREEN.MARGIN + 77, 8, 8 },
+		clickableArea = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 8, Constants.SCREEN.MARGIN + 67, Constants.SCREEN.RIGHT_GAP - 12, 8 },
+		box = {	Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 8, Constants.SCREEN.MARGIN + 67, 8, 8 },
 		toggleState = false,
 		toggleColor = "Positive text",
 		onClick = function(self)
@@ -83,7 +83,7 @@ QuickloadScreen.Buttons = {
 	Back = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Back",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 135, 24, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 125, 24, 11 },
 		onClick = function(self)
 			-- Save all of the Options to the Settings.ini file, and navigate back to the Tracker Setup screen
 			Main.SaveSettings()
@@ -99,7 +99,7 @@ function QuickloadScreen.initialize()
 			text = " SET",
 			labelText = setKey,
 			isSet = false,
-			box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 108, setValue.offsetY, 24, 11 },
+			box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 108, setValue.offsetY - 10, 24, 11 },
 			updateText = function(self)
 				if self.isSet then
 					self.text = "Clear"
@@ -299,7 +299,7 @@ function QuickloadScreen.drawScreen()
 	local topboxX = Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN
 	local topboxY = Constants.SCREEN.MARGIN + 10
 	local topboxWidth = Constants.SCREEN.RIGHT_GAP - (Constants.SCREEN.MARGIN * 2)
-	local topboxHeight = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 10
+	local topboxHeight = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 20
 
 	-- Draw header text
 	local headerShadow = Utils.calcShadowColor(Theme.COLORS["Main background"])
@@ -309,11 +309,11 @@ function QuickloadScreen.drawScreen()
 	gui.drawRectangle(topboxX, topboxY, topboxWidth, topboxHeight, Theme.COLORS[QuickloadScreen.borderColor], Theme.COLORS[QuickloadScreen.boxFillColor])
 
 	-- Draw text to explain a choice should be made
-	Drawing.drawText(topboxX + 2, topboxY + 17, "Choose a quickload option:", Theme.COLORS[QuickloadScreen.textColor], shadowcolor)
-	gui.drawRectangle(topboxX + 4 + 1, topboxY + 30 + 1, topboxWidth - 8, 29, shadowcolor)
-	gui.drawRectangle(topboxX + 4, topboxY + 30, topboxWidth - 8, 29, Theme.COLORS[QuickloadScreen.borderColor], Theme.COLORS[QuickloadScreen.boxFillColor])
-	gui.drawRectangle(topboxX + 4 + 1, topboxY + 63 + 1, topboxWidth - 8, 58, shadowcolor)
-	gui.drawRectangle(topboxX + 4, topboxY + 63, topboxWidth - 8, 58, Theme.COLORS[QuickloadScreen.borderColor], Theme.COLORS[QuickloadScreen.boxFillColor])
+	Drawing.drawText(topboxX + 2, topboxY + 10, "Choose a quickload option:", Theme.COLORS[QuickloadScreen.textColor], shadowcolor)
+	gui.drawRectangle(topboxX + 4 + 1, topboxY + 20 + 1, topboxWidth - 8, 29, shadowcolor)
+	gui.drawRectangle(topboxX + 4, topboxY + 20, topboxWidth - 8, 29, Theme.COLORS[QuickloadScreen.borderColor], Theme.COLORS[QuickloadScreen.boxFillColor])
+	gui.drawRectangle(topboxX + 4 + 1, topboxY + 53 + 1, topboxWidth - 8, 58, shadowcolor)
+	gui.drawRectangle(topboxX + 4, topboxY + 53, topboxWidth - 8, 58, Theme.COLORS[QuickloadScreen.borderColor], Theme.COLORS[QuickloadScreen.boxFillColor])
 
 	-- Draw what settings are currently loaded
 	if QuickloadScreen.Buttons.PremadeRoms.toggleState then

@@ -68,7 +68,7 @@ TimeMachineScreen.Buttons = {
 	CurrentPage = {
 		type = Constants.ButtonTypes.NO_BORDER,
 		text = "", -- Set later via updateText()
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 53, Constants.SCREEN.MARGIN + 135, 50, 10, },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 53, Constants.SCREEN.MARGIN + 125, 50, 10, },
 		isVisible = function() return TimeMachineScreen.Pager.totalPages > 1 end,
 		updateText = function(self)
 			self.text = TimeMachineScreen.Pager:getPageText()
@@ -99,7 +99,7 @@ TimeMachineScreen.Buttons = {
 	CreateNewRestorePoint = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Create",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 4, Constants.SCREEN.MARGIN + 135, 30, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 4, Constants.SCREEN.MARGIN + 125, 30, 11 },
 		onClick = function(self)
 			TimeMachineScreen.createRestorePoint()
 			TimeMachineScreen.buildOutPagedButtons()
@@ -109,7 +109,7 @@ TimeMachineScreen.Buttons = {
 	Back = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Back",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 135, 24, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 125, 24, 11 },
 		onClick = function(self)
 			TimeMachineScreen.resetButtons()
 			Program.changeScreenView(ExtrasScreen)
@@ -323,7 +323,7 @@ function TimeMachineScreen.drawScreen()
 		x = Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN,
 		y = Constants.SCREEN.MARGIN + 10,
 		width = Constants.SCREEN.RIGHT_GAP - (Constants.SCREEN.MARGIN * 2),
-		height = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 10,
+		height = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 20,
 		text = Theme.COLORS[TimeMachineScreen.Colors.text],
 		border = Theme.COLORS[TimeMachineScreen.Colors.border],
 		fill = Theme.COLORS[TimeMachineScreen.Colors.boxFill],

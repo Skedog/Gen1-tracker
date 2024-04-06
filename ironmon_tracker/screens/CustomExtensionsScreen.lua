@@ -86,7 +86,7 @@ CustomExtensionsScreen.Buttons = {
 	CurrentPage = {
 		type = Constants.ButtonTypes.NO_BORDER,
 		text = "", -- Set later via updateText()
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 55, Constants.SCREEN.MARGIN + 135, 50, 10, },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 55, Constants.SCREEN.MARGIN + 125, 50, 10, },
 		isVisible = function() return CustomExtensionsScreen.Pager.totalPages > 1 end,
 		updateText = function(self)
 			self.text = CustomExtensionsScreen.Pager:getPageText()
@@ -95,7 +95,7 @@ CustomExtensionsScreen.Buttons = {
 	PrevPage = {
 		type = Constants.ButtonTypes.PIXELIMAGE,
 		image = Constants.PixelImages.LEFT_ARROW,
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 44, Constants.SCREEN.MARGIN + 136, 10, 10, },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 44, Constants.SCREEN.MARGIN + 125, 10, 10, },
 		isVisible = function() return CustomExtensionsScreen.Pager.totalPages > 1 end,
 		onClick = function(self)
 			CustomExtensionsScreen.Pager:prevPage()
@@ -106,7 +106,7 @@ CustomExtensionsScreen.Buttons = {
 	NextPage = {
 		type = Constants.ButtonTypes.PIXELIMAGE,
 		image = Constants.PixelImages.RIGHT_ARROW,
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 98, Constants.SCREEN.MARGIN + 136, 10, 10, },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 98, Constants.SCREEN.MARGIN + 125, 10, 10, },
 		isVisible = function() return CustomExtensionsScreen.Pager.totalPages > 1 end,
 		onClick = function(self)
 			CustomExtensionsScreen.Pager:nextPage()
@@ -117,7 +117,7 @@ CustomExtensionsScreen.Buttons = {
 	RefreshExtensionList = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Refresh",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 4, Constants.SCREEN.MARGIN + 135, 35, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 4, Constants.SCREEN.MARGIN + 125, 35, 11 },
 		onClick = function(self)
 			CustomCode.refreshExtensionList()
 			CustomExtensionsScreen.buildOutPagedButtons()
@@ -127,7 +127,7 @@ CustomExtensionsScreen.Buttons = {
 	Back = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Back",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 135, 24, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 125, 24, 11 },
 		onClick = function(self)
 			CustomExtensionsScreen.refreshButtons()
 			Program.changeScreenView(NavigationMenu)
@@ -248,7 +248,7 @@ function CustomExtensionsScreen.drawScreen()
 		x = Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN,
 		y = Constants.SCREEN.MARGIN + 10,
 		width = Constants.SCREEN.RIGHT_GAP - (Constants.SCREEN.MARGIN * 2),
-		height = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 10,
+		height = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 20,
 		text = Theme.COLORS[CustomExtensionsScreen.Colors.text],
 		border = Theme.COLORS[CustomExtensionsScreen.Colors.border],
 		fill = Theme.COLORS[CustomExtensionsScreen.Colors.boxFill],

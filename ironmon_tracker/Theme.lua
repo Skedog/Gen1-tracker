@@ -68,8 +68,8 @@ Theme.Buttons = {
 	MoveTypeEnabled = {
 		type = Constants.ButtonTypes.CHECKBOX,
 		text = "Show color bar for move types",
-		box = { Constants.SCREEN.WIDTH + 9, Constants.SCREEN.MARGIN + 109, 8, 8 },
-		clickableArea = { Constants.SCREEN.WIDTH + 9, Constants.SCREEN.MARGIN + 109, Constants.SCREEN.RIGHT_GAP - 12, 10 },
+		box = { Constants.SCREEN.WIDTH + 9, Constants.SCREEN.MARGIN + 104, 8, 8 },
+		clickableArea = { Constants.SCREEN.WIDTH + 9, Constants.SCREEN.MARGIN + 104, Constants.SCREEN.RIGHT_GAP - 12, 10 },
 		toggleState = not Theme.MOVE_TYPES_ENABLED, -- Show the opposite of the Setting, can't change existing theme strings
 		toggleColor = "Positive text",
 		isVisible = function() return Theme.Screen.displayingThemeManager end,
@@ -83,8 +83,8 @@ Theme.Buttons = {
 	DrawTextShadows = {
 		type = Constants.ButtonTypes.CHECKBOX,
 		text = "Text shadows",
-		box = { Constants.SCREEN.WIDTH + 9, Constants.SCREEN.MARGIN + 120, 8, 8 },
-		clickableArea = { Constants.SCREEN.WIDTH + 9, Constants.SCREEN.MARGIN + 120, Constants.SCREEN.RIGHT_GAP - 12, 10 },
+		box = { Constants.SCREEN.WIDTH + 9, Constants.SCREEN.MARGIN + 114, 8, 8 },
+		clickableArea = { Constants.SCREEN.WIDTH + 9, Constants.SCREEN.MARGIN + 114, Constants.SCREEN.RIGHT_GAP - 12, 10 },
 		toggleState = Theme.DRAW_TEXT_SHADOWS,
 		toggleColor = "Positive text",
 		isVisible = function() return Theme.Screen.displayingThemeManager end,
@@ -193,7 +193,7 @@ Theme.Buttons = {
 	EditColors = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Edit Theme Colors",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 4, Constants.SCREEN.MARGIN + 135, 74, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 4, Constants.SCREEN.MARGIN + 125, 74, 11 },
 		isVisible = function() return Theme.Screen.displayingThemeManager end,
 		onClick = function(self)
 			Theme.Screen.displayingThemeManager = false
@@ -203,7 +203,7 @@ Theme.Buttons = {
 	Back = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Back",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 135, 24, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 125, 24, 11 },
 		onClick = function(self)
 			Theme.setNextMoveLevelHighlight(false) -- Update the next move level highlight color
 			Main.SaveSettings() -- Always save all of the Options to the Settings.ini file
@@ -673,7 +673,7 @@ function Theme.drawMoreOptions()
 		x = Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN,
 		y = topbox.y + topbox.height + 13,
 		width = Constants.SCREEN.RIGHT_GAP - (Constants.SCREEN.MARGIN * 2),
-		height = 45,
+		height = 36,
 	}
 
 	-- Draw header text
@@ -690,8 +690,8 @@ function Theme.drawMoreOptions()
 	Drawing.drawTrackerThemePreview(topbox.x + 13, topbox.y + 16, Theme.PresetPreviewColors, showColorBars)
 
 	-- Draw bottom Theme screen view box and its header
-	gui.drawRectangle(botbox.x, botbox.y, botbox.width, botbox.height, Theme.COLORS[Theme.Screen.borderColor], Theme.COLORS[Theme.Screen.boxFillColor])
-	Drawing.drawText(botbox.x + 0, botbox.y - 11, "Active Theme Options:", Theme.COLORS["Header text"], headerShadow)
+	gui.drawRectangle(botbox.x, botbox.y - 3, botbox.width, botbox.height, Theme.COLORS[Theme.Screen.borderColor], Theme.COLORS[Theme.Screen.boxFillColor])
+	Drawing.drawText(botbox.x + 0, botbox.y - 13, "Active Theme Options:", Theme.COLORS["Header text"], headerShadow)
 
 	-- Draw all buttons
 	for _, button in pairs(Theme.Buttons) do

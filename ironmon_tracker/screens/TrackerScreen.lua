@@ -16,7 +16,7 @@ TrackerScreen.Buttons = {
 			return FileManager.buildImagePath(iconset.folder, tostring(pokemonID), iconset.extension)
 		end,
 		clickableArea = { Constants.SCREEN.WIDTH + 5, 5, 32, 27 },
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN, -1, 32, 32 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN, -5, 32, 32 },
 		isVisible = function() return true end,
 		onClick = function(self)
 			local pokemon = Tracker.getViewedPokemon()
@@ -109,7 +109,7 @@ TrackerScreen.Buttons = {
 		text = "",
 		textColor = "Default text",
 		clickableArea = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 1, 57, 96, 23 },
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 3, 63, 8, 12 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 3, 55, 8, 12 },
 		isVisible = function() return not Tracker.Data.isViewingOwn end,
 		onClick = function(self)
 			if not RouteData.hasRouteEncounterArea(Program.GameData.mapId, Battle.CurrentRoute.encounterArea) then return end
@@ -181,8 +181,8 @@ TrackerScreen.Buttons = {
 		image = Constants.PixelImages.NOTEPAD,
 		text = "(Leave a note)",
 		textColor = "Lower box text",
-		clickableArea = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 1, 140, 138, 12 },
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 4, 140, 11, 11 },
+		clickableArea = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 1, 128, 138, 12 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 4, 128, 11, 11 },
 		isVisible = function() return TrackerScreen.carouselIndex == TrackerScreen.CarouselTypes.NOTES end,
 		onClick = function(self)
 			local pokemon = Tracker.getViewedPokemon()
@@ -356,7 +356,7 @@ function TrackerScreen.initialize()
 		TrackerScreen.Buttons[badgeName] = {
 			type = Constants.ButtonTypes.IMAGE,
 			image = FileManager.buildImagePath(FileManager.Folders.Badges, GameSettings.badgePrefix .. "_" .. badgeName .. "_OFF", FileManager.Extensions.BADGE),
-			box = { xOffset, 138, badgeWidth, badgeWidth },
+			box = { xOffset, 127, badgeWidth, badgeWidth },
 			badgeIndex = index,
 			badgeState = 0,
 			isVisible = function() return TrackerScreen.carouselIndex == TrackerScreen.CarouselTypes.BADGES end,
@@ -675,11 +675,11 @@ function TrackerScreen.drawPokemonInfoArea(data)
 	Drawing.drawButton(TrackerScreen.Buttons.PokemonIcon, shadowcolor)
 	if not Options["Reveal info if randomized"] and not Tracker.Data.isViewingOwn and PokemonData.IsRand.pokemonTypes then
 		-- Don't reveal randomized Pokemon types for enemies
-		Drawing.drawTypeIcon(PokemonData.Types.UNKNOWN, Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 1, 33)
+		Drawing.drawTypeIcon(PokemonData.Types.UNKNOWN, Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 1, 26)
 	else
-		Drawing.drawTypeIcon(data.p.types[1], Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 1, 33)
+		Drawing.drawTypeIcon(data.p.types[1], Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 1, 26)
 		if data.p.types[2] ~= data.p.types[1] then
-			Drawing.drawTypeIcon(data.p.types[2], Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 1, 45)
+			Drawing.drawTypeIcon(data.p.types[2], Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 1, 38)
 		end
 	end
 
@@ -792,11 +792,11 @@ function TrackerScreen.drawPokemonInfoArea(data)
 
 	-- HEALS INFO / ENCOUNTER INFO
 	local infoBoxHeight = 23
-	gui.drawRectangle(Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN, Constants.SCREEN.MARGIN + 52, 96, infoBoxHeight, Theme.COLORS["Upper box border"], Theme.COLORS["Upper box background"])
+	gui.drawRectangle(Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN, Constants.SCREEN.MARGIN + 45, 96, infoBoxHeight, Theme.COLORS["Upper box border"], Theme.COLORS["Upper box background"])
 
 	if Tracker.Data.isViewingOwn and data.p.id ~= 0 then
-		Drawing.drawText(Constants.SCREEN.WIDTH + 6, 57, "Heals in Bag:", Theme.COLORS["Default text"], shadowcolor)
-		Drawing.drawText(Constants.SCREEN.WIDTH + 6, 67, string.format("%.0f%%", data.x.healperc) .. " HP (" .. data.x.healnum .. ")", Theme.COLORS["Default text"], shadowcolor)
+		Drawing.drawText(Constants.SCREEN.WIDTH + 6, 50, "Heals in Bag:", Theme.COLORS["Default text"], shadowcolor)
+		Drawing.drawText(Constants.SCREEN.WIDTH + 6, 60, string.format("%.0f%%", data.x.healperc) .. " HP (" .. data.x.healnum .. ")", Theme.COLORS["Default text"], shadowcolor)
 
 		if Options["Track PC Heals"] then
 			Drawing.drawText(Constants.SCREEN.WIDTH + 60, 57, "PC Heals:", Theme.COLORS["Default text"], shadowcolor)
@@ -825,12 +825,12 @@ function TrackerScreen.drawPokemonInfoArea(data)
 		else
 			encounterText = "Seen on trainers: " .. data.x.encounters
 			routeText = string.format("Team:")
-			Drawing.drawTrainerTeamPokeballs(Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 40, Constants.SCREEN.MARGIN + 65, shadowcolor)
+			Drawing.drawTrainerTeamPokeballs(Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 40, Constants.SCREEN.MARGIN + 57, shadowcolor)
 		end
 
 		Drawing.drawButton(TrackerScreen.Buttons.RouteDetails, shadowcolor)
-		Drawing.drawText(Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 11, Constants.SCREEN.MARGIN + 53, encounterText, Theme.COLORS["Default text"], shadowcolor)
-		Drawing.drawText(Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 11, Constants.SCREEN.MARGIN + 63, routeText, Theme.COLORS["Default text"], shadowcolor)
+		Drawing.drawText(Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 11, Constants.SCREEN.MARGIN + 45, encounterText, Theme.COLORS["Default text"], shadowcolor)
+		Drawing.drawText(Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 11, Constants.SCREEN.MARGIN + 55, routeText, Theme.COLORS["Default text"], shadowcolor)
 	end
 end
 
@@ -863,7 +863,7 @@ function TrackerScreen.drawStatsArea(data)
 	local statOffsetY = 7
 
 	-- Draw the border box for the Stats area
-	gui.drawRectangle(Constants.SCREEN.WIDTH + statBoxWidth, 5, Constants.SCREEN.RIGHT_GAP - statBoxWidth - 5, 75, Theme.COLORS["Upper box border"], Theme.COLORS["Upper box background"])
+	gui.drawRectangle(Constants.SCREEN.WIDTH + statBoxWidth, 5, Constants.SCREEN.RIGHT_GAP - statBoxWidth - 5, 68, Theme.COLORS["Upper box border"], Theme.COLORS["Upper box background"])
 
 	-- Draw the six primary stats
 	for _, statKey in ipairs(Constants.OrderedLists.STATSTAGES) do
@@ -925,7 +925,7 @@ function TrackerScreen.drawMovesArea(data)
 	local bgHeaderShadow = Utils.calcShadowColor(Theme.COLORS["Main background"])
 
 	local moveTableHeaderHeightDiff = 13
-	local moveOffsetY = 94
+	local moveOffsetY = 86
 	local moveCatOffset = 7
 	local moveNameOffset = 6 -- Move names (longest name is 12 characters?)
 	local movePPOffset = 82
@@ -955,7 +955,7 @@ function TrackerScreen.drawMovesArea(data)
 
 	-- Draw the Moves view box
 	gui.defaultTextBackground(Theme.COLORS["Lower box background"])
-	gui.drawRectangle(Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN, moveOffsetY - 2, Constants.SCREEN.RIGHT_GAP - (2 * Constants.SCREEN.MARGIN), 46, Theme.COLORS["Lower box border"], Theme.COLORS["Lower box background"])
+	gui.drawRectangle(Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN, moveOffsetY - 2, Constants.SCREEN.RIGHT_GAP - (2 * Constants.SCREEN.MARGIN), 38, Theme.COLORS["Lower box border"], Theme.COLORS["Lower box background"])
 
 	if Options["Show physical special icons"] then -- Check if move categories will be drawn
 		moveNameOffset = moveNameOffset + 8
@@ -1016,7 +1016,7 @@ function TrackerScreen.drawMovesArea(data)
 		Drawing.drawNumber(Constants.SCREEN.WIDTH + movePowerOffset, moveOffsetY, move.power, 3, movePowerColor, shadowcolor)
 		Drawing.drawNumber(Constants.SCREEN.WIDTH + moveAccOffset, moveOffsetY, move.accuracy, 3, Theme.COLORS["Lower box text"], shadowcolor)
 
-		moveOffsetY = moveOffsetY + 10 -- linespacing
+		moveOffsetY = moveOffsetY + 8 -- linespacing
 	end
 end
 
@@ -1024,7 +1024,7 @@ function TrackerScreen.drawCarouselArea(data)
 	local shadowcolor = Utils.calcShadowColor(Theme.COLORS["Lower box background"])
 
 	-- Draw the border box for the Stats area
-	gui.drawRectangle(Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN, 136, Constants.SCREEN.RIGHT_GAP - (2 * Constants.SCREEN.MARGIN), 19, Theme.COLORS["Lower box border"], Theme.COLORS["Lower box background"])
+	gui.drawRectangle(Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN, 125, Constants.SCREEN.RIGHT_GAP - (2 * Constants.SCREEN.MARGIN), 18, Theme.COLORS["Lower box border"], Theme.COLORS["Lower box background"])
 
 	local carousel = TrackerScreen.getCurrentCarouselItem()
 	for _, content in pairs(carousel.getContentList(data.p.id)) do

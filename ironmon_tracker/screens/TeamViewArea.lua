@@ -42,7 +42,7 @@ function TeamViewArea.buildOutPartyScreen()
 
 	local nextBoxX = TeamViewArea.Canvas.x
 	local nextBoxY = TeamViewArea.Canvas.y
-	local boxWidth = math.floor(TeamViewArea.Canvas.width / 6)
+	local boxWidth = math.floor(TeamViewArea.Canvas.width / 6) + 0.6
 	local boxHeight = TeamViewArea.Canvas.height - 1
 	for i=1, 6, 1 do
 		-- Alternative "Tracker.getPokemon" to allow for eggs
@@ -60,9 +60,14 @@ function TeamViewArea.buildOutPartyScreen()
 	end
 end
 
+function firstToUpper(str)
+	local tempStr = string.lower(str)
+    return (tempStr:gsub("^%l", string.upper))
+end
+
 function TeamViewArea.createPartyMemberBox(pokemon, x, y, width, height)
 	local barHeight = 3
-	local colOffset = 34
+	local colOffset = 26
 	local finalboxOffset = Utils.inlineIf(x + width == Constants.SCREEN.WIDTH + Constants.SCREEN.RIGHT_GAP, -1, 0)
 	local isEgg = (pokemon.isEgg == 1)
 
@@ -90,7 +95,8 @@ function TeamViewArea.createPartyMemberBox(pokemon, x, y, width, height)
 
 			-- Pokemon's Nickname
 			local nicknameText = Utils.inlineIf(isEgg, TeamViewArea.Labels.eggNickname, pokemon.nickname)
-			Drawing.drawText(self.x + 1, yOffset, nicknameText, self.text, self.shadow)
+			local transformedNickname = firstToUpper(nicknameText)
+			Drawing.drawText(self.x, yOffset, transformedNickname, self.text, self.shadow, 9)
 			yOffset = yOffset + Constants.SCREEN.LINESPACING - 1
 
 			if isEgg then
@@ -169,7 +175,7 @@ function TeamViewArea.createPartyMemberBox(pokemon, x, y, width, height)
 			return FileManager.buildImagePath(iconset.folder, tostring(self.pokemonID), iconset.extension)
 		end,
 		clickableArea = { x + 1, yOffset, 32, 27 },
-		box = { x + 1, yOffset - 7, 32, 32 },
+		box = { x-3, yOffset - 7, 32, 32 },
 		onClick = function(self)
 			if not isEgg and PokemonData.isValid(self.pokemonID) then
 				InfoScreen.changeScreenView(InfoScreen.Screens.POKEMON_INFO, self.pokemonID)

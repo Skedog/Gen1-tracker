@@ -125,7 +125,7 @@ NavigationMenu.Buttons = {
 	Credits = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Credits",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 4, Constants.SCREEN.MARGIN + 135, 32, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 4, Constants.SCREEN.MARGIN + 125, 32, 11 },
 		isVisible = function() return not NavigationMenu.showCredits end,
 		onClick = function(self)
 			NavigationMenu.showCredits = true
@@ -135,14 +135,14 @@ NavigationMenu.Buttons = {
 	Help = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Help",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 41, Constants.SCREEN.MARGIN + 135, 23, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 41, Constants.SCREEN.MARGIN + 125, 23, 11 },
 		isVisible = function() return not NavigationMenu.showCredits end,
 		onClick = function(self) NavigationMenu.openWikiBrowserWindow() end
 	},
 	Back = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Back",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 135, 24, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 125, 24, 11 },
 		onClick = function(self)
 			if NavigationMenu.showCredits then
 				NavigationMenu.showCredits = false
@@ -174,7 +174,7 @@ NavigationMenu.OrderedMenuList = {
 function NavigationMenu.initialize()
 	local btnWidth = 63
 	local btnHeight = 16
-	local spacer = 6
+	local spacer = 5
 	local startX = Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 4
 	local startY = Constants.SCREEN.MARGIN + 12 + spacer
 	for i, button in ipairs(NavigationMenu.OrderedMenuList) do
@@ -235,7 +235,7 @@ function NavigationMenu.drawScreen()
 	local topboxX = Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN
 	local topboxY = Constants.SCREEN.MARGIN + 10
 	local topboxWidth = Constants.SCREEN.RIGHT_GAP - (Constants.SCREEN.MARGIN * 2)
-	local topboxHeight = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 10
+	local topboxHeight = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 20
 
 	-- Draw header text
 	local headerShadow = Utils.calcShadowColor(Theme.COLORS["Main background"])
@@ -260,7 +260,7 @@ function NavigationMenu.drawCredits()
 	local topboxColX = topboxX + 58
 	local topboxY = Constants.SCREEN.MARGIN + 10
 	local topboxWidth = Constants.SCREEN.RIGHT_GAP - (Constants.SCREEN.MARGIN * 2)
-	local topboxHeight = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 10
+	local topboxHeight = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 20
 	local linespacing = Constants.SCREEN.LINESPACING + 1
 
 	-- Draw header text
@@ -278,10 +278,10 @@ function NavigationMenu.drawCredits()
 	Drawing.drawText(topboxColX, offsetY, Main.CreditsList.CreatedBy, Theme.COLORS[NavigationMenu.textColor], shadowcolor)
 	local espeonImage = FileManager.buildImagePath(Options.IconSetMap["1"].folder, "196", Options.IconSetMap["1"].extension)
 	gui.drawImage(espeonImage, topboxColX + 40, offsetY - 13, 32, 32)
-	offsetY = offsetY + linespacing + 10
+	offsetY = offsetY + linespacing - 3
 
 	Drawing.drawText(offsetX, offsetY, "Contributors: ", Theme.COLORS[NavigationMenu.textColor], shadowcolor)
-	offsetY = offsetY + linespacing + 1
+	offsetY = offsetY + linespacing - 3
 
 	-- Draw Contributors List
 	offsetX = offsetX + 4
@@ -289,7 +289,7 @@ function NavigationMenu.drawCredits()
 	for i=1, #Main.CreditsList.Contributors, 2 do
 		Drawing.drawText(offsetX, offsetY, Main.CreditsList.Contributors[i], Theme.COLORS[NavigationMenu.textColor], shadowcolor)
 		if Main.CreditsList.Contributors[i + 1] ~= nil then
-			Drawing.drawText(topboxColX, offsetY, Main.CreditsList.Contributors[i + 1], Theme.COLORS[NavigationMenu.textColor], shadowcolor)
+			Drawing.drawText(topboxColX + 40, offsetY, Main.CreditsList.Contributors[i + 1], Theme.COLORS[NavigationMenu.textColor], shadowcolor)
 		end
 		offsetY = offsetY + linespacing
 	end

@@ -28,7 +28,7 @@ local buttonHeight = 16
 local buttonWidth = 75
 -- Used to more easily place the "Yes" button
 local buttonYOffset = Constants.SCREEN.MARGIN + 10 +
-	 ((#ViewLogWarningScreen.Labels.warnings1 + 1) * (Constants.SCREEN.LINESPACING))
+	 ((#ViewLogWarningScreen.Labels.warnings1 + 1) * (Constants.SCREEN.LINESPACING-1))
 -- Center the "Yes" button
 local buttonXOffset = Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN +
 	 ((Constants.SCREEN.RIGHT_GAP - (Constants.SCREEN.MARGIN * 2)) / 2) - (buttonWidth / 2)
@@ -60,7 +60,7 @@ ViewLogWarningScreen.Buttons = {
 	Back = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Back",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 135, 24, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 125, 24, 11 },
 		onClick = function(self)
 			-- Save all of the Options to the Settings.ini file, and navigate back to the main Tracker screen
 			Main.SaveSettings()
@@ -96,7 +96,7 @@ function ViewLogWarningScreen.drawScreen()
 		x = Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN,
 		y = Constants.SCREEN.MARGIN + 10,
 		width = Constants.SCREEN.RIGHT_GAP - (Constants.SCREEN.MARGIN * 2),
-		height = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 10,
+		height = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 20,
 		text = Theme.COLORS[ViewLogWarningScreen.Colors.text],
 		border = Theme.COLORS[ViewLogWarningScreen.Colors.border],
 		fill = Theme.COLORS[ViewLogWarningScreen.Colors.boxFill],
@@ -128,7 +128,7 @@ function ViewLogWarningScreen.drawScreen()
 		end
 		local shadow = Utils.calcShadowColor(Theme.COLORS[ViewLogWarningScreen.Colors.boxFill])
 		local centerOffsetX = Utils.getCenteredTextX(text, topBox.width)
-		Drawing.drawText(topBox.x + centerOffsetX, topBox.y + (i * Constants.SCREEN.LINESPACING) - 9, text,
+		Drawing.drawText(topBox.x + centerOffsetX, topBox.y + (i * Constants.SCREEN.LINESPACING) - 11, text,
 			Theme.COLORS[color],
 			shadow)
 	end
@@ -142,7 +142,7 @@ function ViewLogWarningScreen.drawScreen()
 		end
 		local shadow = Utils.calcShadowColor(Theme.COLORS[ViewLogWarningScreen.Colors.boxFill])
 		local centerOffsetX = Utils.getCenteredTextX(text, topBox.width)
-		Drawing.drawText(topBox.x + centerOffsetX, buttonYOffset + buttonHeight + (i * Constants.SCREEN.LINESPACING) - 4,
+		Drawing.drawText(topBox.x + centerOffsetX, buttonYOffset + buttonHeight + (i * Constants.SCREEN.LINESPACING) - 6,
 			text,
 			Theme.COLORS[color],
 			shadow)

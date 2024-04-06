@@ -26,7 +26,7 @@ GameOptionsScreen.Buttons = {
 	Back = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Back",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 135, 24, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 125, 24, 11 },
 		onClick = function(self)
 			-- Save all of the Options to the Settings.ini file, and navigate back to the main Tracker screen
 			Main.SaveSettings()
@@ -38,7 +38,7 @@ GameOptionsScreen.Buttons = {
 function GameOptionsScreen.initialize()
 	local startX = Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 3
 	local startY = Constants.SCREEN.MARGIN + 14
-	local linespacing = Constants.SCREEN.LINESPACING + 1
+	local linespacing = Constants.SCREEN.LINESPACING
 
 	for _, optionKey in ipairs(GameOptionsScreen.OptionKeys) do
 		GameOptionsScreen.Buttons[optionKey] = {
@@ -88,7 +88,7 @@ function GameOptionsScreen.drawScreen()
 		x = Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN,
 		y = Constants.SCREEN.MARGIN + 10,
 		width = Constants.SCREEN.RIGHT_GAP - (Constants.SCREEN.MARGIN * 2),
-		height = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 10,
+		height = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 20,
 		text = Theme.COLORS[GameOptionsScreen.Colors.text],
 		border = Theme.COLORS[GameOptionsScreen.Colors.border],
 		fill = Theme.COLORS[GameOptionsScreen.Colors.boxFill],

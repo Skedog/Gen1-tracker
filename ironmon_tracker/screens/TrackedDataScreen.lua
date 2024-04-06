@@ -18,26 +18,26 @@ TrackedDataScreen.Buttons = {
 	SaveData = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Save Data",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 19, Constants.SCREEN.MARGIN + 117, 44, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 19, Constants.SCREEN.MARGIN + 110, 44, 11 },
 		onClick = function() TrackedDataScreen.openSaveDataPrompt() end
 	},
 	LoadData = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Load Data",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 75, Constants.SCREEN.MARGIN + 117, 44, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 75, Constants.SCREEN.MARGIN + 110, 44, 11 },
 		onClick = function() TrackedDataScreen.openLoadDataPrompt() end
 	},
 	ClearData = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = " * Clear Data *",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 4, Constants.SCREEN.MARGIN + 135, 63, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 4, Constants.SCREEN.MARGIN + 125, 63, 11 },
 		confirmReset = false,
 		onClick = function() TrackedDataScreen.tryClearData() end
 	},
 	Back = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Back",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 135, 24, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 125, 24, 11 },
 		onClick = function(self)
 			-- Revert the Clear Data button
 			TrackedDataScreen.Buttons.ClearData.text = " * Clear Data *"
@@ -53,7 +53,7 @@ TrackedDataScreen.Buttons = {
 
 function TrackedDataScreen.initialize()
 	local startX = Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 8
-	local startY = Constants.SCREEN.MARGIN + 52
+	local startY = Constants.SCREEN.MARGIN + 46
 
 	for _, optionKey in ipairs(TrackedDataScreen.OptionKeys) do
 		TrackedDataScreen.Buttons[optionKey] = {
@@ -161,7 +161,7 @@ function TrackedDataScreen.drawScreen()
 	local topboxX = Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN
 	local topboxY = Constants.SCREEN.MARGIN + 10
 	local topboxWidth = Constants.SCREEN.RIGHT_GAP - (Constants.SCREEN.MARGIN * 2)
-	local topboxHeight = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 10
+	local topboxHeight = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 20
 
 	-- Draw header text
 	local headerShadow = Utils.calcShadowColor(Theme.COLORS["Main background"])
@@ -171,7 +171,7 @@ function TrackedDataScreen.drawScreen()
 	gui.drawRectangle(topboxX, topboxY, topboxWidth, topboxHeight, Theme.COLORS[TrackedDataScreen.borderColor], Theme.COLORS[TrackedDataScreen.boxFillColor])
 
 	local offsetX = topboxX + 2
-	local offsetY = topboxY + 5
+	local offsetY = topboxY + 2
 
 	local wrappedSummary = Utils.getWordWrapLines(TrackedDataScreen.Descriptions.autosave, 35)
 	for _, line in pairs(wrappedSummary) do
@@ -188,11 +188,11 @@ function TrackedDataScreen.drawScreen()
 
 	-- Draw small divider line
 	local dividerLine = Constants.BLANKLINE .. "" .. Constants.BLANKLINE .. "" .. Constants.BLANKLINE
-	Drawing.drawText(offsetX + Utils.centerTextOffset(dividerLine) + 3, offsetY - 10, dividerLine, Theme.COLORS[TrackedDataScreen.textColor], shadowcolor)
+	Drawing.drawText(offsetX + Utils.centerTextOffset(dividerLine) + 3, offsetY - 13, dividerLine, Theme.COLORS[TrackedDataScreen.textColor], shadowcolor)
 
 	wrappedSummary = Utils.getWordWrapLines(TrackedDataScreen.Descriptions.manualsave, 32)
 	for _, line in pairs(wrappedSummary) do
-		Drawing.drawText(offsetX, offsetY, line, Theme.COLORS[TrackedDataScreen.textColor], shadowcolor)
+		Drawing.drawText(offsetX, offsetY - 3, line, Theme.COLORS[TrackedDataScreen.textColor], shadowcolor)
 		offsetY = offsetY + 11
 	end
 end

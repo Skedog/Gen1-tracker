@@ -103,7 +103,7 @@ StreamerScreen.Buttons = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Back",
 		-- boxColors = { "Lower box border", "Lower box background" }, -- leave for when adding in second box later
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 135, 24, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 125, 24, 11 },
 		onClick = function(self)
 			Program.changeScreenView(NavigationMenu)
 		end
@@ -228,7 +228,7 @@ function StreamerScreen.drawScreen()
 		x = Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN,
 		y = Constants.SCREEN.MARGIN + 10,
 		width = Constants.SCREEN.RIGHT_GAP - (Constants.SCREEN.MARGIN * 2),
-		height = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 10,
+		height = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 20,
 		text = Theme.COLORS[StreamerScreen.Colors.upperText],
 		border = Theme.COLORS[StreamerScreen.Colors.upperBorder],
 		fill = Theme.COLORS[StreamerScreen.Colors.upperBoxFill],
