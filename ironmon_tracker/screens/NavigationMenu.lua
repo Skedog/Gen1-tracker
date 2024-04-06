@@ -157,19 +157,33 @@ NavigationMenu.Buttons = {
 		end
 	},
 }
-
-NavigationMenu.OrderedMenuList = {
-	NavigationMenu.Buttons.SetupAndOptions,
-	NavigationMenu.Buttons.Extras,
-	NavigationMenu.Buttons.GameplaySettings,
-	NavigationMenu.Buttons.QuickloadSettings,
-	NavigationMenu.Buttons.ThemeCustomization,
-	NavigationMenu.Buttons.ManageTrackedData,
-	NavigationMenu.Buttons.ViewStats,
-	NavigationMenu.Buttons.CheckForUpdates,
-	NavigationMenu.Buttons.StreamerTools,
-	NavigationMenu.Buttons.Extensions,
-}
+if GameSettings.game == 1 then
+	-- Remove Extras button, as none of these functions work in Gen1
+	NavigationMenu.OrderedMenuList = {
+		NavigationMenu.Buttons.SetupAndOptions,
+		NavigationMenu.Buttons.GameplaySettings,
+		NavigationMenu.Buttons.QuickloadSettings,
+		NavigationMenu.Buttons.ThemeCustomization,
+		NavigationMenu.Buttons.ManageTrackedData,
+		NavigationMenu.Buttons.ViewStats,
+		NavigationMenu.Buttons.CheckForUpdates,
+		NavigationMenu.Buttons.StreamerTools,
+		NavigationMenu.Buttons.Extensions,
+	}
+else
+	NavigationMenu.OrderedMenuList = {
+		NavigationMenu.Buttons.SetupAndOptions,
+		NavigationMenu.Buttons.Extras,
+		NavigationMenu.Buttons.GameplaySettings,
+		NavigationMenu.Buttons.QuickloadSettings,
+		NavigationMenu.Buttons.ThemeCustomization,
+		NavigationMenu.Buttons.ManageTrackedData,
+		NavigationMenu.Buttons.ViewStats,
+		NavigationMenu.Buttons.CheckForUpdates,
+		NavigationMenu.Buttons.StreamerTools,
+		NavigationMenu.Buttons.Extensions,
+	}
+end
 
 function NavigationMenu.initialize()
 	local btnWidth = 63
