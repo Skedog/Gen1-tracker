@@ -292,12 +292,7 @@ function InfoScreen.openMoveInfoWindow()
 	Utils.setFormLocation(moveLookup, 100, 50)
 
 	local moveName = MoveData.Moves[InfoScreen.infoLookup].name -- infoLookup = moveId
-	local allmovesData = {}
-	for _, data in pairs(MoveData.Moves) do
-		if data.name ~= Constants.BLANKLINE then
-			table.insert(allmovesData, data.name)
-		end
-	end
+	local allmovesData = MoveData.namesToList()
 
 	forms.label(moveLookup, "Choose a Pokemon Move to look up:", 49, 10, 250, 20)
 	local moveDropdown = forms.dropdown(moveLookup, {["Init"]="Loading Move Data"}, 50, 30, 145, 30)

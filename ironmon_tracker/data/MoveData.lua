@@ -143,6 +143,19 @@ end
 
 end
 
+function MoveData.namesToList()
+	local moveNames = {}
+	for _, move in pairs(MoveData.Moves) do
+		if GameSettings.game == 1 and _ == 166 then
+			break
+		end
+		if move.name ~= Constants.BLANKLINE then
+			table.insert(moveNames, move.name)
+		end
+	end
+	return moveNames
+end
+
 function MoveData.readMoveInfoFromMemory(moveId)
 
 	local moveData = Memory.readdword(GameSettings.gBattleMoves +(moveId-1)*0x06 +0x02)
