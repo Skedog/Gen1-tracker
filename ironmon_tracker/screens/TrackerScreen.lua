@@ -130,7 +130,7 @@ TrackerScreen.Buttons = {
 		isVisible = function() return not Tracker.Data.isViewingOwn end,
 		onClick = function(self)
 			local pokemon = Tracker.getViewedPokemon()
-			if pokemon ~= nil and PokemonData.isValid(pokemon.pokemonID) then
+			if pokemon ~= nil and PokemonData.isValid(pokemon.pokemonID) and GameSettings.game ~= 1 then
 				local trackedAbilities = Tracker.getAbilities(pokemon.pokemonID)
 				InfoScreen.changeScreenView(InfoScreen.Screens.ABILITY_INFO, trackedAbilities[1].id)
 			end
@@ -145,7 +145,7 @@ TrackerScreen.Buttons = {
 		isVisible = function() return true end,
 		onClick = function(self)
 			local pokemon = Tracker.getViewedPokemon()
-			if pokemon ~= nil and PokemonData.isValid(pokemon.pokemonID) then
+			if pokemon ~= nil and PokemonData.isValid(pokemon.pokemonID) and GameSettings.game ~= 1 then
 				local abilityId
 				if Tracker.Data.isViewingOwn then
 					abilityId = PokemonData.getAbilityId(pokemon.pokemonID, pokemon.abilityNum)
