@@ -131,7 +131,7 @@ GameOverScreen.Buttons = {
 		type = Constants.ButtonTypes.ICON_BORDER,
 		image = Constants.PixelImages.MAGNIFYING_GLASS,
 		text = GameOverScreen.Labels.viewLogFile,
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 14, Constants.SCREEN.MARGIN + 129, 112, 16 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 14, Constants.SCREEN.MARGIN + 112, 112, 16 },
 		isVisible = function(self) return true end,
 		updateText = function(self)
 			if Options["Use premade ROMs"] or Options["Generate ROM each time"] then
