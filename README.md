@@ -1,26 +1,20 @@
-# Ironmon-Tracker
-This is a in developement fork of the https://github.com/besteon/Ironmon-Tracker that aims to adept the tracker to work for gen1  games 
+# Gen1-Tracker
+This fork of [Ironmon-Tracker](https://github.com/besteon/Ironmon-Tracker) aims to fix all of the layout issues from the existing [Gen1 Fork](https://github.com/mollo010/Ironmon-gen-tracker) - as well as limiting moves, pokemon, etc to only ones found in Gen1
 
-This project is based on [MKDasher's PokemonBizhawkLua project](https://github.com/besteon/Ironmon-Tracker).
+This *should* work for Ironmon, as well as just general tracking in Gen1, for example in regular randomizers/soul-links/etc
 
-This is a WIP bugs and instability can be expected
+## Installation
+These instructions are mostly copied from the initial Ironmon-Tracker - no promises on other emulators/versions, this Fork has been tested on Bizhawk 2.9.1 specifically
 
-Currently supported Pokémon games / languages:
-Red US/Eu version
-BLue UE version
-Yellow UE version
-
-There are a couple of VS Code extensions which we recommend, which should automatically be recommended to you in your VS Code:
-
-- [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig): To help with consistent formatting.
-- [vscode-lua](https://marketplace.visualstudio.com/items?itemName=trixnz.vscode-lua): Provides intellisense and linting for Lua.
-
-Lua Versions:
-- Bizhawk 2.8 uses Lua 5.1, this is the version currently set in our `.vscode/settings.json` file for linting.
-- Bizhawk 2.9 and mGBA use Lua 5.4
-   - Since we intend to still support Bizhawk 2.8 the code must be compatible with both Lua 5.1 and 5.4
-
-Emu-specific Lua documentation:
-- [Bizhawk Lua Functions](https://tasvideos.org/Bizhawk/LuaFunctions)
-- [mGBA Scripting API](https://mgba.io/docs/scripting.html)
-
+1. **Download the Tracker**
+   - You can get the latest project release from the [Releases](https://github.com/Skedog/Gen1-tracker/releases/latest) section of this Github repository
+2. **Get a Supported Emulator**
+   - I recommend using the Bizhawk emulator (Windows/Linux only), as this is the only Emulator I have tested this Fork on
+      - [Download Bizhawk](https://tasvideos.org/BizHawk/ReleaseHistory) (v2.9 or higher)
+      - If you are on Windows, make sure to also download and run the [prereq installer](https://github.com/TASEmulators/BizHawk-Prereqs/releases) first
+      - If you are on Linux, we recommend using Bizhawk 2.9 or higher
+3. **Install and Setup**
+   - See the full [Installation Guide](https://github.com/besteon/Ironmon-Tracker/wiki/Installation-Guide#install-for-bizhawk) for detailed instructions for installing the tracker in Bizhawk
+   - If you are on Linux, you'll also want to install the [Franklin Gothic Medium font](https://fontsgeek.com/fonts/Franklin-Gothic-Medium-Regular).
+4. **Quickstart Guide**
+   - After getting it all setup, check out the [Quickstart Guide](https://github.com/besteon/Ironmon-Tracker/wiki/Quickstart-Guide) for an overview on how to use the Tracker and learn about all of the information that it displays. Please note that this shows some data that doesn't exist in Gen1, such as Pokémon Abilities etc
