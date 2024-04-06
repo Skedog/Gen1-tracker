@@ -157,33 +157,18 @@ NavigationMenu.Buttons = {
 		end
 	},
 }
-if GameSettings.game == 1 then
-	-- Remove Extras button, as none of these functions work in Gen1
-	NavigationMenu.OrderedMenuList = {
-		NavigationMenu.Buttons.SetupAndOptions,
-		NavigationMenu.Buttons.GameplaySettings,
-		NavigationMenu.Buttons.QuickloadSettings,
-		NavigationMenu.Buttons.ThemeCustomization,
-		NavigationMenu.Buttons.ManageTrackedData,
-		NavigationMenu.Buttons.ViewStats,
-		NavigationMenu.Buttons.CheckForUpdates,
-		NavigationMenu.Buttons.StreamerTools,
-		NavigationMenu.Buttons.Extensions,
-	}
-else
-	NavigationMenu.OrderedMenuList = {
-		NavigationMenu.Buttons.SetupAndOptions,
-		NavigationMenu.Buttons.Extras,
-		NavigationMenu.Buttons.GameplaySettings,
-		NavigationMenu.Buttons.QuickloadSettings,
-		NavigationMenu.Buttons.ThemeCustomization,
-		NavigationMenu.Buttons.ManageTrackedData,
-		NavigationMenu.Buttons.ViewStats,
-		NavigationMenu.Buttons.CheckForUpdates,
-		NavigationMenu.Buttons.StreamerTools,
-		NavigationMenu.Buttons.Extensions,
-	}
-end
+NavigationMenu.OrderedMenuList = {
+	NavigationMenu.Buttons.SetupAndOptions,
+	NavigationMenu.Buttons.Extras,
+	NavigationMenu.Buttons.GameplaySettings,
+	NavigationMenu.Buttons.QuickloadSettings,
+	NavigationMenu.Buttons.ThemeCustomization,
+	NavigationMenu.Buttons.ManageTrackedData,
+	NavigationMenu.Buttons.ViewStats,
+	NavigationMenu.Buttons.CheckForUpdates,
+	NavigationMenu.Buttons.StreamerTools,
+	NavigationMenu.Buttons.Extensions,
+}
 
 function NavigationMenu.initialize()
 	local btnWidth = 63
@@ -191,6 +176,10 @@ function NavigationMenu.initialize()
 	local spacer = 5
 	local startX = Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 4
 	local startY = Constants.SCREEN.MARGIN + 12 + spacer
+	-- Remove extras button for Gen1 as none of these options work in Gen1
+	if GameSettings.game == 1 then
+		table.remove(NavigationMenu.OrderedMenuList, 2)
+	end
 	for i, button in ipairs(NavigationMenu.OrderedMenuList) do
 		button.type = Constants.ButtonTypes.ICON_BORDER
 		button.box = { startX, startY, btnWidth, btnHeight }
