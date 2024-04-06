@@ -368,7 +368,7 @@ end
 function PokemonData.namesToList()
 	local pokemonNames = {}
 	for _, pokemon in ipairs(PokemonData.Pokemon) do
-		if GameSettings.GEN == 1 and _ == 152 then
+		if GameSettings.game == 1 and _ == 152 then
 			break
 		end
 		if pokemon.bst ~= Constants.BLANKLINE then -- Skip fake Pokemon
