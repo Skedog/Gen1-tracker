@@ -162,8 +162,8 @@ TrackerScreen.Buttons = {
 		type = Constants.ButtonTypes.NO_BORDER,
 		text = "",
 		textColor = "Intermediate text", -- set later after highlight color is calculated
-		clickableArea = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 1, 81, 77, 10 },
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 69, 81, 10, 10 },
+		clickableArea = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 1, 71, 77, 10 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 69, 71, 10, 10 },
 		boxColors = { "Header text", "Main background" },
 		isVisible = function()
 			local viewedPokemon = Tracker.getViewedPokemon()
@@ -224,7 +224,7 @@ TrackerScreen.Buttons = {
 		image = Constants.PixelImages.CLOCK,
 		text = "Steps: ##,###", -- Placeholder template, see updateText() below
 		textColor = "Lower box text",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 3, 141, 10, 10 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 3, 129, 10, 10 },
 		isVisible = function() return TrackerScreen.carouselIndex == TrackerScreen.CarouselTypes.PEDOMETER end,
 		updateText = function(self)
 			local stepCount = Program.Pedometer:getCurrentStepcount()
@@ -244,8 +244,8 @@ TrackerScreen.Buttons = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Goal",
 		textColor = "Lower box text",
-		clickableArea = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 81, 140, 23, 11 },
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 81, 140, 23, 11 },
+		clickableArea = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 81, 128, 23, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 81, 128, 23, 11 },
 		boxColors = { "Lower box border", "Lower box background" },
 		isVisible = function() return TrackerScreen.carouselIndex == TrackerScreen.CarouselTypes.PEDOMETER end,
 		updateText = function(self)
@@ -261,8 +261,8 @@ TrackerScreen.Buttons = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Reset",
 		textColor = "Lower box text",
-		clickableArea = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 108, 140, 28, 11 },
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 108, 140, 28, 11 },
+		clickableArea = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 108, 128, 28, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 108, 128, 28, 11 },
 		boxColors = { "Lower box border", "Lower box background" },
 		isVisible = function() return TrackerScreen.carouselIndex == TrackerScreen.CarouselTypes.PEDOMETER end,
 		updateText = function(self)
@@ -632,7 +632,7 @@ end
 function TrackerScreen.checkInput(xmouse, ymouse)
 
 	Input.checkButtonsClicked(xmouse, ymouse, TrackerScreen.Buttons)
-	Input.checkAnyMovesClicked(xmouse, ymouse)
+	Input.checkAnyMovesClicked(xmouse, ymouse + 7)
 
 	-- Check if mouse clicked on the game screen: on a new move learned, show info
 	local gameFooterHeight = 45

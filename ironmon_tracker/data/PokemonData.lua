@@ -357,7 +357,7 @@ end
 
 function PokemonData.getIdFromName(pokemonName)
 	for id, pokemon in pairs(PokemonData.Pokemon) do
-		if string.upper(pokemon.name) == pokemonName then
+		if string.upper(pokemon.name) == string.upper(pokemonName) then
 			return id
 		end
 	end
@@ -368,6 +368,9 @@ end
 function PokemonData.namesToList()
 	local pokemonNames = {}
 	for _, pokemon in ipairs(PokemonData.Pokemon) do
+		if GameSettings.GEN == 1 and _ == 152 then
+			break
+		end
 		if pokemon.bst ~= Constants.BLANKLINE then -- Skip fake Pokemon
 			table.insert(pokemonNames, pokemon.name)
 		end
