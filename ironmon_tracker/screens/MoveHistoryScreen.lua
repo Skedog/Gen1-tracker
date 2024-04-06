@@ -45,7 +45,7 @@ MoveHistoryScreen.Buttons = {
 	CurrentPage = {
 		type = Constants.ButtonTypes.NO_BORDER,
 		text = "", -- Set later via updateText()
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 46, Constants.SCREEN.MARGIN + 135, 50, 10, },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 46, Constants.SCREEN.MARGIN + 125, 50, 10, },
 		isVisible = function() return MoveHistoryScreen.Pagination.totalPages > 1 end,
 		updateText = function(self)
 			self.text = MoveHistoryScreen.Pagination:getPageText()
@@ -54,7 +54,7 @@ MoveHistoryScreen.Buttons = {
 	PrevPage = {
 		type = Constants.ButtonTypes.PIXELIMAGE,
 		image = Constants.PixelImages.LEFT_ARROW,
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 32, Constants.SCREEN.MARGIN + 136, 10, 10, },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 32, Constants.SCREEN.MARGIN + 125, 10, 10, },
 		isVisible = function() return MoveHistoryScreen.Pagination.totalPages > 1 end,
 		onClick = function(self)
 			MoveHistoryScreen.Pagination:prevPage()
@@ -65,7 +65,7 @@ MoveHistoryScreen.Buttons = {
 	NextPage = {
 		type = Constants.ButtonTypes.PIXELIMAGE,
 		image = Constants.PixelImages.RIGHT_ARROW,
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 91, Constants.SCREEN.MARGIN + 136, 10, 10, },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 91, Constants.SCREEN.MARGIN + 125, 10, 10, },
 		isVisible = function() return MoveHistoryScreen.Pagination.totalPages > 1 end,
 		onClick = function(self)
 			MoveHistoryScreen.Pagination:nextPage()
@@ -76,7 +76,7 @@ MoveHistoryScreen.Buttons = {
 	Back = {
 		type = Constants.ButtonTypes.FULL_BORDER,
 		text = "Back",
-		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 136, 24, 11 },
+		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 112, Constants.SCREEN.MARGIN + 125, 24, 11 },
 		onClick = function(self)
 			if InfoScreen.infoLookup == nil or InfoScreen.infoLookup == 0 then
 				Program.changeScreenView(TrackerScreen)
@@ -201,7 +201,7 @@ function MoveHistoryScreen.drawScreen()
 	local topboxX = Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN
 	local topboxY = Constants.SCREEN.MARGIN
 	local topboxWidth = Constants.SCREEN.RIGHT_GAP - (Constants.SCREEN.MARGIN * 2)
-	local topboxHeight = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2)
+	local topboxHeight = Constants.SCREEN.HEIGHT - (Constants.SCREEN.MARGIN * 2) - 10
 
 	if not PokemonData.isValid(MoveHistoryScreen.pokemonID) then
 		for _, button in pairs(MoveHistoryScreen.Buttons) do
