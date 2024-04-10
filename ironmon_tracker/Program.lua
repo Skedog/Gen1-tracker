@@ -485,8 +485,10 @@ function Program.updatePokemonTeams()
 	if not Tracker.Data.isNewGame and Tracker.Data.ownTeam[1] == 0 then
 		Tracker.Data.isNewGame = true
 	end
+	local playerPartyCount = Memory.readbyte(GameSettings.gPlayerPartyCountNew)
+	Tracker.Data.ownTeam = {}
 
-	for i = 1, 6, 1 do
+	for i = 1, playerPartyCount, 1 do
 		-- Lookup information on the player's Pokemon first
 		local id = Memory.readbyte(GameSettings.pstats + addressOffset)
 

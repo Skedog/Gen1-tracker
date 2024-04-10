@@ -609,6 +609,7 @@ function GameSettings.setWramAddresses()
 		gMapHeader = { 0x0200135E},
 
 		gPlayerPartyCount={0x0200189C},
+		gPlayerPartyCountNew={0x02001163},
 
 		badgeOffset = { 0x02001356 },
 		bagPocket_Items_offset = {   0x0200131E },
