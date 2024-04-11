@@ -632,7 +632,7 @@ end
 function TrackerScreen.checkInput(xmouse, ymouse)
 
 	Input.checkButtonsClicked(xmouse, ymouse, TrackerScreen.Buttons)
-	Input.checkAnyMovesClicked(xmouse, ymouse + 7)
+	Input.checkAnyMovesClicked(xmouse, ymouse + 12)
 
 	-- Check if mouse clicked on the game screen: on a new move learned, show info
 	local gameFooterHeight = 45
