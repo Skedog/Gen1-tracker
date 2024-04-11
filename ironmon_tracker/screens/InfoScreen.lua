@@ -246,7 +246,8 @@ InfoScreen.Buttons = {
 		clickableArea = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 1, 142, 110, 12 },
 		box = { Constants.SCREEN.WIDTH + Constants.SCREEN.MARGIN + 4, 142, 11, 11 },
 		isVisible = function() return InfoScreen.viewScreen == InfoScreen.Screens.POKEMON_INFO end,
-		onClick = function(self) TrackerScreen.openNotePadWindow(InfoScreen.infoLookup) end,
+		-- onClick = function(self) TrackerScreen.openNotePadWindow(InfoScreen.infoLookup) end,
+		onClick = function(self) end,
 	}
 }
 
