@@ -496,7 +496,7 @@ function Program.updatePokemonTeams()
 		Tracker.Data.ownTeam[i] = id
 
 		if id ~= 0 then
-			local newPokemonData = Program.readNewPokemon(GameSettings.pstats + addressOffset, id)
+			local newPokemonData = Program.readNewPokemon(GameSettings.pstats + addressOffset, id, i)
 
 			if Program.validPokemonData(newPokemonData) then
 
@@ -836,9 +836,38 @@ function Program.readNewEnemyPokemonGen2(startAddress, id)
 	}
 end
 
+function getNickname(partyIndex)
+	-- D2B5 to D2F6 = nicknames
+	local nickOffset = 31
+	local nickNameToReturn = ''
+	local nicknameStartAddrs = 0x020012B5
+	local nicknameEndAddrs = 0x020012F6
+	local lastReadAddr = 0x020012B5
+	local lastWas80 = false
+	if partyIndex == 1 then
+		nicknameStartAddrs = 0x020012B5
+	elseif partyIndex == 2 then
+		nicknameStartAddrs = 0x020012C0
+	elseif partyIndex == 3 then
+		nicknameStartAddrs = 0x020012CB
+	elseif partyIndex == 4 then
+		nicknameStartAddrs = 0x020012D6
+	elseif partyIndex == 5 then
+		nicknameStartAddrs = 0x020012E1
+	elseif partyIndex == 6 then
+		nicknameStartAddrs = 0x020012EC
+	end
+	for x = 0, 9, 1 do
+		if Memory.readbyte(nicknameStartAddrs + x) ~= 80 then
+			nickNameToReturn = nickNameToReturn .. string.char(Memory.readbyte(nicknameStartAddrs + x) - nickOffset)
+		else
+			break
+		end
+	end
+	return nickNameToReturn
+end
 
-
-function Program.readNewPokemon(startAddress, id)
+function Program.readNewPokemon(startAddress, id, partyIndex)
 	-- Pokemon Data structure:https://datacrystal.romhacking.net/wiki/Pokémon_Red/Blue:RAM_map#Player
 
 
@@ -878,10 +907,10 @@ function Program.readNewPokemon(startAddress, id)
 	local move_pp= Memory.readdword(startAddress+29)
 	local train_id =Memory.readword(startAddress+12)
 
-
 	return {
 		personality = id,
-		nickname = MiscData.InternalID[id],
+		-- nickname = MiscData.InternalID[id],
+		nickname = getNickname(partyIndex),
 		trainerID = train_id,
 		pokemonID = species,
 		heldItem = nil,
